@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'API_Payments.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'apipagos',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST':'localhost',
-        'PORT':'3306'
+        'NAME': '####',
+        'USER': '###',
+        'PASSWORD': '###',
+        'HOST':'######',
+        'PORT':'####'
     }
 }
 
