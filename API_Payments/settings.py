@@ -42,6 +42,10 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'payments',
     'users',
+    'django_filters',
+    'corsheaders',
+    'drf_yasg',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -81,13 +85,14 @@ WSGI_APPLICATION = 'API_Payments.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': '####',
-        'USER': '###',
-        'PASSWORD': '###',
-        'HOST':'######',
-        'PORT':'####'
+        'NAME': 'apipagos',
+        'USER': 'nativeuser',
+        'PASSWORD': 'password',
+        'HOST':'localhost',
+        'PORT':'3306'
     }
 }
+
 
 
 # Password validation
@@ -134,7 +139,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.ScopedRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'payments': '1000/day',
+
+
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    }
 }
 
 AUTH_USER_MODEL = 'users.User'
