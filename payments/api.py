@@ -11,7 +11,7 @@ class PaymentsViewSet(viewsets.ModelViewSet):
     queryset = Payments.objects.get_queryset().order_by('id')
     serializer_class = PaymentsSerializer
     pagination_class = StandardResultsSetPagination
-    #permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ('usuario__id', 'fecha_pago', 'servicio')
     
