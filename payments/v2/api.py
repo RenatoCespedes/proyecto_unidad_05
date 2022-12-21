@@ -1,3 +1,4 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.response import Response
 from rest_framework import status, generics,filters
 from .models import Payment_users,Service,Expired_payments
@@ -20,7 +21,9 @@ class ApiPayment(viewsets.ModelViewSet):
     queryset=Payment_users.objects.all()
     pagination_class=StandardPagination
     #permission_classes = [UserPaymentPermission]
-    filter_backends = [filters.OrderingFilter]
+   # filter_backends = [filters.OrderingFilter]
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    filterset_fields = ('Payment_date','Expiration_date')
 
     def get_serializer_class(self):
         return PaymentSerializer
