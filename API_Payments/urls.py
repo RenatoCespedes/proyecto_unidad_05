@@ -35,7 +35,7 @@ schema_view = get_schema_view(
     ),
     public=True,
     permission_classes=[AllowAny],
-    urlconf="pagos.v2.urls"
+    urlconf="payments.v2.urls"
     
 )
 
@@ -66,6 +66,8 @@ urlpatterns = [
     re_path(r'^swagger/user$', schema_view_user.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     re_path(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 
 ]
 
