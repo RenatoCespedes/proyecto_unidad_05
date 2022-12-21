@@ -2,6 +2,9 @@
 # API DE PAGOS V2
 
 
+# **Integrantes**
++ Renato Gonzalo Cespedes Fuentes
++ Abel Esteban Orosco Segovia
 
 ## Documentacion
 La Documentacion de la Api se encuentra en la ruta del host  /swagger/user (usuarios) y en la ruta /swagger/pagos (pagos v2), para más detalle observar el archivo [urls.py](/API_Payments/urls.py)
