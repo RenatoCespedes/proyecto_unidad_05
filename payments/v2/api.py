@@ -20,7 +20,7 @@ from .permisos import UserPermission, UserPaymentPermission,UserExpiredPermissio
 class ApiPayment(viewsets.ModelViewSet):
     queryset=Payment_users.objects.all()
     pagination_class=StandardPagination
-    #permission_classes = [UserPaymentPermission]
+    permission_classes = [UserPaymentPermission]
    # filter_backends = [filters.OrderingFilter]
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ('Payment_date','Expiration_date')
@@ -98,7 +98,7 @@ class ApiPayment(viewsets.ModelViewSet):
 class ApiService(viewsets.ModelViewSet):
     queryset=Service.objects.all()
     pagination_class=StandardPagination
-    #permission_classes=[UserPermission]
+    permission_classes=[UserPermission]
     # http_method_names = ['get']
     def get_serializer_class(self):
         return ServiceSerializer
@@ -158,7 +158,7 @@ class ApiService(viewsets.ModelViewSet):
 class ApiExpired(viewsets.ModelViewSet):
     queryset=Expired_payments.objects.all()
     pagination_class=StandardPagination
-    #permission_classes=[UserExpiredPermission]
+    permission_classes=[UserExpiredPermission]
     http_method_names = ['get','post']
     def get_serializer_class(self):
         return ExpiredSerializer
